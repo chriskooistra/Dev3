@@ -17,4 +17,7 @@ private LinkedList<String> terms = new LinkedList<String>();
        public static void main(String args[]) {
            Polynomial p = new Polynomial ("(2,3)(6,5)(7,9)(3,1)(4,2)");
        }
-}
+       
+       System.out.println("Titties");
+}//I want to be able to see this in my git history
+
