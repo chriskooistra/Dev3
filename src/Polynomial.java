@@ -68,6 +68,26 @@ private LinkedList<int []> terms = new LinkedList<int []>();
            return a;
            
        }
+       private void merge(){
+           for (int i=0;i<this.terms.size()-1;i++){
+               boolean merge=false;
+               do{
+                   if (this.terms.get(i)[1]==this.terms.get(i+1)[1]){
+                       
+                       this.terms.get(i)[0]+=this.terms.get(i+1)[0];
+                       this.terms.remove(i+1);
+                       merge =true;
+                   }
+                   else 
+                       merge = false;
+               }
+               while (merge);
+               
+           }System.out.println("Merge----------------------------------------");
+           for (int[] r:this.terms){
+               System.out.println("Term1: "+r[0]+" Term2: "+r[1]);
+           }  System.out.println("Merge done----------------------------------------");
+       }
        private Polynomial multiPoly(Polynomial p){
            Polynomial a = new Polynomial("(0,0)");
            for (int i[]:p.terms){                
@@ -78,41 +98,22 @@ private LinkedList<int []> terms = new LinkedList<int []>();
                    a.terms.add(w);
                }
            }
-           a=collectTerms(a);
-           return a;
-       }
-       private Polynomial collectTerms(Polynomial p){
-           Polynomial a = new Polynomial("(0,0)");
-           ArrayList<Integer> dejacompte = new ArrayList<Integer>();
-           for(int[]q:p.terms){
-               boolean paspresent= false;
-               for (int v:dejacompte)
-                   if (q[1]==v)
-                       paspresent = true;
-               if (paspresent){
-                   int [] l = new int[2];
-                   l[1]=q[1];
-                   for (int i=0;i<p.terms.size();i++){
-                       if(q[1]==p.terms.get(i)[1]){
-                       l[0]+=p.terms.get(i)[0];
-                       }
-                   }
-                   a.terms.add(l);
-               
-               dejacompte.add(q[1]);
-           }
-               
-       }System.out.println("===============================================");
+           Collections.sort(a.terms,new termComp());
+           System.out.println("Multi----------------------------------------");
            for (int[] r:a.terms){
                System.out.println("Term1: "+r[0]+" Term2: "+r[1]);
-       }System.out.println("===============================================");
+           }  System.out.println("Multi done----------------------------------------");
            return a;
        }
+       
        public static void main(String args[]) {
-           Polynomial p = new Polynomial ("(2,3)(6,5)(7,9)(3,1)(4,2)");
+          Polynomial p = new Polynomial ("(2,3)(6,5)(7,9)(3,1)(4,2)");
            Polynomial z = new Polynomial ("(2,3)(6,5)(7,9)(3,1)(4,2)(4,8)");
            Polynomial e = p.addPoly(z);
            Polynomial q = p.multiPoly(z);
+           //Polynomial a = new Polynomial ("(2,3)(1,3)");
+           //a.merge();
+           q.merge();
        }
        
 
