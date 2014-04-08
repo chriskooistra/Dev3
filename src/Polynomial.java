@@ -119,4 +119,4 @@ private LinkedList<int []> terms = new LinkedList<int []>();
        }
        
 
-}
+}///  blah blah blah je rajoute plein de shit pas rapport pour voir si ça marche avec ma nouvelle branch.
