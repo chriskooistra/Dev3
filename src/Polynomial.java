@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -9,7 +8,7 @@ private LinkedList<int []> terms = new LinkedList<int []>();
       public Polynomial(String s){
            addTerm(s);
        }
-      
+// Comparator utilisé pour mettre les termes en ordre numérique
       public class termComp implements Comparator<int[]>{
             public int compare(int[] a, int[] b){
                 if (a[1] > b[1]) { return -1; }
@@ -17,7 +16,7 @@ private LinkedList<int []> terms = new LinkedList<int []>();
                 else { return 1; }
             }
       }
-
+// Méthode qui rajoute un string qui contient des termes d'un polynôme
        private void addTerm(String s){
            String delims="[()]+";
            String [] toks = s.split(delims);
@@ -42,6 +41,7 @@ private LinkedList<int []> terms = new LinkedList<int []>();
            }
            System.out.println("----------------------------------------");
        }
+       // Méthode pour additioner un autre polynôme
        private Polynomial addPoly(Polynomial p){
            Polynomial a = p;
            int size =p.terms.size();
@@ -68,6 +68,7 @@ private LinkedList<int []> terms = new LinkedList<int []>();
            return a;
            
        }
+       // Méthode pour collectioner les termes qui ont le même puissance de x.
        private void merge(){
            for (int i=0;i<this.terms.size()-1;i++){
                boolean merge=false;
@@ -88,6 +89,7 @@ private LinkedList<int []> terms = new LinkedList<int []>();
                System.out.println("Term1: "+r[0]+" Term2: "+r[1]);
            }  System.out.println("Merge done----------------------------------------");
        }
+       // Méthode pour multiplier par un autre polyôme
        private Polynomial multiPoly(Polynomial p){
            Polynomial a = new Polynomial("(0,0)");
            for (int i[]:p.terms){                
@@ -117,6 +119,4 @@ private LinkedList<int []> terms = new LinkedList<int []>();
        }
        
 
-}//I want to be able to see this in my git history
-///I want to see if this one really works!
-
+}
