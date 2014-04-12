@@ -77,7 +77,7 @@ private LinkedList<int []> terms = new LinkedList<int []>();
                        
                        this.terms.get(i)[0]+=this.terms.get(i+1)[0];
                        this.terms.remove(i+1);
-                       merge =true;
+                       merge = true;
                    }
                    else 
                        merge = false;
@@ -107,6 +107,12 @@ private LinkedList<int []> terms = new LinkedList<int []>();
            }  System.out.println("Multi done----------------------------------------");
            return a;
        }
+       private void derive(){
+           for (int i[]:terms){
+               i[0]=i[0]*i[1];
+               i[1]-=1;
+           }
+       }
        
        public static void main(String args[]) {
           Polynomial p = new Polynomial ("(2,3)(6,5)(7,9)(3,1)(4,2)");
@@ -115,6 +121,8 @@ private LinkedList<int []> terms = new LinkedList<int []>();
            Polynomial q = p.multiPoly(z);
            //Polynomial a = new Polynomial ("(2,3)(1,3)");
            //a.merge();
+           q.merge();
+           q.derive();
            q.merge();
        }
        
