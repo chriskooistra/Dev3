@@ -101,6 +101,7 @@ private LinkedList<int []> terms = new LinkedList<int []>();
                }
            }
            Collections.sort(a.terms,new termComp());
+           a.terms.removeLast();
            System.out.println("Multi----------------------------------------");
            for (int[] r:a.terms){
                System.out.println("Term1: "+r[0]+" Term2: "+r[1]);
@@ -113,6 +114,14 @@ private LinkedList<int []> terms = new LinkedList<int []>();
                i[1]-=1;
            }
        }
+       private void printPoly(){
+           String s="";
+           for(int[] t:this.terms){
+               s+=(t[0]+"x^("+t[1]+") + ");
+           }
+           s=s.substring(0, s.length()-2);
+           System.out.println(s);
+       }
        
        public static void main(String args[]) {
           Polynomial p = new Polynomial ("(2,3)(6,5)(7,9)(3,1)(4,2)");
@@ -124,7 +133,8 @@ private LinkedList<int []> terms = new LinkedList<int []>();
            q.merge();
            q.derive();
            q.merge();
+           q.printPoly();
        }
        
 
-}///  blah blah blah je rajoute plein de shit pas rapport pour voir si ça marche avec ma nouvelle branch.
+}
